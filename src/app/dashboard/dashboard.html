@@ -1,0 +1,28 @@
+<h4 class="page-title">
+    Dashboard
+</h4>
+
+<div layout-gt-md="row">
+
+
+    <div clas="">
+        <div layout="row">
+            <div flex>
+                <div layout="column">
+                    <div flex>
+                        <nvd3 options="dashboard.getWalkingDetailsGraphOptions()" data="dashboard.fitness">
+                        </nvd3>
+                    </div>
+                    <div flex>
+
+                        <nvd3 options="dashboard.getSleepDetailsGraphOptions()" data="dashboard.sleep">
+                        </nvd3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

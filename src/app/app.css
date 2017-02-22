@@ -1,0 +1,81 @@
+
+
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail{
+  height: 120px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.manifest-preview-tile{
+  height: 150px;
+    padding: 5px;
+
+    border: 1px solid #D4D4D2;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+.preview-title p{
+    font-weight: bold;
+}
+
+.error-message{
+  color: red;
+}
+
+.preview-button-panel{
+  margin: 5px;
+}
+
+.manifest-step-container{
+      margin-top: 60px;
+      margin-left: auto;
+      width: 95%;
+}
+.home-container {
+  height:480px;
+}
+
+.form-element-with-label-text , .validation-color{
+  color: red;
+
+}
+.navigationbartitles{
+  text-transform: none;
+}
+.bold{
+  font-weight: bold;
+}
+.marging10{
+   margin-left: 10px;
+}
+.gif-fallback{
+     display: none;
+     display: inline-block;
+}
+.overlay__img{
+  margin-left:-77px;
+  width:200px;
+}
+.overlayLoder{
+  margin:50%;
+}
+.section-header{
+  margin-top: 50px;
+}
+  
+  .footer{
+   margin-top: 50px;
+  }
+
+
+    
