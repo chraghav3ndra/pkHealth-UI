@@ -1,0 +1,402 @@
+* {
+    font-family: roboto-light;
+    font-size: 15px;
+}
+
+
+/** BODY STYLE*/
+
+.body {
+    background-color: #FCFAF7
+}
+
+
+/* BANNER STYLE */
+
+.banner {
+    background-color: #2e7982;
+    height: 72px;
+    vertical-align: middle;
+    padding-top: 15px;
+}
+
+.banner .logo {
+    margin: 5px;
+    width: 80%;
+}
+
+.banner img {
+    height: 30px;
+    float: left;
+}
+
+.title {
+    color: #FFFFFF;
+    margin: auto;
+    padding: 3px;
+    font-size: 25px;
+}
+
+.banner .banner-menus {
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: Roboto-regular;
+}
+
+.edp-header {
+    background-color: #FFFFFF;
+}
+
+
+/*
+.banner .banner-menus ul {
+    list-style-type: none;
+}
+
+.banner .banner-menus li {
+    float: left;
+}
+
+.banner .banner-menus li a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-family: Roboto-regular;
+}
+*/
+
+
+/* Page Navigation */
+
+.back-button {
+    position: absolute;
+    left: 10px;
+    top: 120px;
+}
+
+.page-header {}
+
+.step-header {}
+
+.step-header-2 {
+    margin-left: 50px;
+}
+
+.level-2 {
+    margin-left: 100px;
+    margin-right: 10px;
+}
+
+.repeat-box {
+    border: 1px solid #eee;
+    margin-top: 5px;
+}
+
+.environment-steps {
+    margin: 10px 0 10px 0;
+}
+
+.delete-button {
+    background-color: #D2490F;
+    height: 20px;
+    width: 25px;
+    padding: 1px;
+    border-radius: 3px;
+}
+
+.delete-button a {
+    color: #FFFFFF;
+    text-decoration: none;
+    display: block;
+}
+
+.add-panel {
+    padding-top: 5px;
+}
+
+.col-url {
+    width: 500px;
+}
+
+input, .label-input {
+    font-family: roboto-light;
+    font-size: 14px;
+    color: #333333;
+    width: 100%;
+    padding: .5rem .75rem;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+    background-clip: padding-box;
+}
+
+select {
+    font-family: roboto-light;
+    font-size: 14px;
+    color: #333333;
+    padding: .5rem .75rem;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+    background-clip: padding-box;
+}
+
+.group-url {
+    height: 50px;
+}
+
+.button-link {
+    font-family: roboto-regular;
+    font-size: 16px;
+    color: #2E7982;
+}
+
+.add-button-link {
+    font-family: roboto-medium;
+    font-size: 16px;
+    color: #2E7982;
+}
+
+.next-button {
+    font-family: roboto-regular;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #2E7982;
+}
+
+.next-button-sm {
+    font-family: roboto-regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    background-color: #2E7982;
+}
+
+label {
+    font-size: 15px;
+    font-family: roboto-light;
+    color: #2e7982;
+}
+
+
+/* Header styles */
+
+h4.page-header {
+    position: absolute;
+    top: -1%;
+    left: 5%;
+    font-size: 30px;
+    font-family: roboto-regular;
+    color: #FFFFFF;
+    border: none;
+}
+
+h4.preview-header {
+    font-size: 1em;
+    font-family: roboto-bold;
+    color: #2E7982;
+}
+
+.add-actions {
+    width: 150px;
+    height: 50px;
+    padding: 5px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.page-actions {
+    width: 150px;
+    height: 50px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.nav-tabs li.active a.nav-link {
+    background: #2E7982;
+    color: #FFFFFF;
+}
+
+.nav-tabs li a.nav-link {
+    color: #2E7982;
+    background: #F3F3F3;
+}
+
+.manifest .panel-heading, .setup .panel-heading {
+    padding: 1px 3px;
+}
+
+
+/* Wizard Panel */
+
+.wizard-panel {
+    top: 100px;
+    width: 90%;
+    margin-left: 50px;
+}
+
+.wizard-panel form {
+    width: 90%;
+    margin: auto;
+}
+
+
+/* Preview Styles */
+
+.scrollable {
+    max-height: 360px;
+    overflow-y: scroll;
+    border: #EFEFEF 1px solid;
+}
+
+.preview-title {
+    font-family: roboto-medium;
+    font-size: 15px;
+    color: #4A4A4A;
+}
+
+.preview-content .preview-panel {
+    height: 120px;
+    padding: 5px;
+    margin: auto;
+    width: 90%;
+}
+
+.preview-content {
+    background-color: #EFEFEF;
+    padding: 1px;
+}
+
+.preview-content label {
+    font-size: 15px;
+    font-family: roboto-light;
+    color: #AFAFAC;
+}
+
+.preview-content a {
+    font-size: 15px;
+    font-family: roboto-medium;
+    color: #2E7982;
+}
+
+.preview-content .data-column {
+    border-left: 1px solid #EFEFEF;
+}
+
+.preview-content .index-column {
+    vertical-align: middle;
+}
+
+.tile-preview-lg {
+    width: 400px;
+    padding: 5px;
+    margin: 10px;
+    display: block;
+    line-height: 1.42857143;
+    background-color: #fff;
+    transition: border .2s ease-in-out;
+}
+
+.tile-preview-sm {
+    height: 120px;
+    width: 95%;
+    padding: 5px;
+    margin: 10px;
+    display: block;
+    line-height: 1.42857143;
+    background-color: #fff;
+    transition: border .2s ease-in-out;
+}
+
+.tile-preview-preview {
+    width: 95%;
+    padding: 5px;
+    margin: 10px;
+    display: block;
+    line-height: 1.42857143;
+    background-color: #fff;
+    transition: border .2s ease-in-out;
+}
+
+
+/*Login page */
+
+.login {
+    width: 50%;
+}
+
+.login-form {
+    margin: 20% auto;
+    width: 100%;
+}
+
+
+/* Home Page */
+
+.home {
+    width: 20%;
+    margin: auto;
+}
+
+.home-button-panel {
+    position: absolute;
+    top: 50%;
+}
+
+.home-button-panel button {
+    font-family: Roboto-medium;
+    font-size: 20px;
+    color: #2E7982;
+    background-color: #FFFFFF;
+    height: 80px;
+    width: 240px;
+}
+
+
+/* Preview */
+
+.preview {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+/* Wizard Header Format */
+
+.steps-indicator li a {
+    color: #808080;
+    text-decoration: none;
+    text-transform: none;
+    font-weight: bold;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: roboto-light;
+    font-size: 15px;
+}
+
+
+/* breadcrumb */
+
+.breadcrumb-list {
+    margin-bottom: 0px;
+}
+
+
+/* data-before-after */
+
+.data-before-after {
+    margin: 5px 20px 5px 20px;
+}
+
+.pull-margin-delete-right {
+    margin: 1% 0 0 97%;
+}
+
+
+/* edp-setup-environments */
+
+.edp-setup-environments {
+    margin: 10px 0 10px 0;
+}

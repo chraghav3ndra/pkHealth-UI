@@ -1,0 +1,17 @@
+<div class="edp-modal">
+
+
+    <div class="modal-header">
+        <span class="modal-title" id="modal-title">{{modal.title_1}}</span>
+    </div>
+
+
+    <div class="modal-body">
+        {{modal.message}}
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn next-button-sm" ng-click="modal.ok($event)">Ok</button>
+        <button class="btn btn-secondary" ng-if="modal.showCancel" ng-click="modal.cancel($event)">Cancel</button>
+    </div>
+</div>
