@@ -3,7 +3,7 @@ angular
     .controller("DashboardController", DashboardController);
 
 /** @ngInject */
-function DashboardController($log, dashboardService) {
+function DashboardController($log, $scope, $timeout, dashboardService) {
 
     var vm = this;
     vm.fitness = [];
@@ -14,6 +14,65 @@ function DashboardController($log, dashboardService) {
 
     var _walkingGraphOptions = null;
     var _sleepGraphOptions = null;
+
+    vm.gridsterOptions = {
+        margins: [20, 20],
+        columns: 4,
+        mobileModeEnabled: false,
+        draggable: {
+            handle: 'h3'
+        },
+        resizable: {
+            enabled: true,
+            handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
+
+            // optional callback fired when resize is started
+            start: function(event, $element, widget) {},
+
+            // optional callback fired when item is resized,
+            resize: function(event, $element, widget) {
+                if (widget.chart.api) widget.chart.api.update();
+            },
+
+            // optional callback fired when item is finished resizing
+            stop: function(event, $element, widget) {
+                $timeout(function() {
+                    if (widget.chart.api) widget.chart.api.update();
+                }, 400)
+            }
+        },
+    };
+
+    function _getData() {
+        var _dashboard = {
+            widgets: [{
+                col: 0,
+                row: 0,
+                sizeY: 2,
+                sizeX: 2,
+                name: "Sleep pattern Chart",
+                chart: {
+                    options: getSleepDetailsGraphOptions(),
+                    data: vm.sleep,
+                    api: {}
+                }
+            }, {
+                col: 1,
+                row: 0,
+                sizeY: 2,
+                sizeX: 2,
+                name: "Workout Chart",
+                chart: {
+                    options: getWalkingDetailsGraphOptions(),
+                    data: vm.fitness,
+                    api: {}
+                }
+            }]
+        };
+
+        return _dashboard;
+
+    }
 
     function getWalkingDetailsGraphOptions() {
         if (_.isNull(_walkingGraphOptions)) {
@@ -53,6 +112,30 @@ function DashboardController($log, dashboardService) {
         return _walkingGraphOptions;
     }
 
+    // We want to manually handle `window.resize` event in each directive.
+    // So that we emulate `resize` event using $broadcast method and internally subscribe to this event in each directive
+    // Define event handler
+    $scope.events = {
+        resize: function(e, scope) {
+            $timeout(function() {
+                scope.api.update()
+            }, 200)
+        }
+    };
+    angular.element(window)
+        .on('resize', function(e) {
+            $scope.$broadcast('resize');
+        });
+
+    // We want to hide the charts until the grid will be created and all widths and heights will be defined.
+    // So that use `visible` property in config attribute
+    $scope.config = {
+        visible: false
+    };
+    $timeout(function() {
+        $scope.config.visible = true;
+    }, 200);
+
 
     function getSleepDetailsGraphOptions() {
         if (_.isNull(_sleepGraphOptions)) {
@@ -83,8 +166,8 @@ function DashboardController($log, dashboardService) {
                     xAxis: {
                         axisLabel: 'Dates',
                         tickFormat: function(d) {
-                            console.log("X Axis data", d);
-                            return d3.time.format('%x')(new Date(d.timestamp))
+                            console.log("X Axis data", d3.time.format('%x')(new Date(d)));
+                            return d3.time.format('%x')(new Date(d));
                         },
                         rotateLabels: 30,
                         showMaxMin: false
@@ -94,13 +177,13 @@ function DashboardController($log, dashboardService) {
                         axisLabelDistance: -10,
                         tickFormat: function(d) {
                             console.log("Y Axis data", d);
-                            return d3.format(',.1f')(d);
+                            return d3.format(',.1f')(d / 1000);
                         }
                     },
                     tooltip: {
                         keyFormatter: function(d) {
                             console.log("Tool data", d);
-                            return d3.time.format('%x')(new Date(d.timestamp));
+                            return d.timestamp; //d3.time.format('%x')(new Date(d.timestamp));
                         }
                     },
                 }
@@ -125,29 +208,52 @@ function DashboardController($log, dashboardService) {
                 });
                 //vm.fitness = data.fitness;
                 $log.info("vm.fitness", vm.fitness);
+                dashboardService.getSleepData()
+                    .then(function(data) {
+                        var _sleepRecords = [];
+                        vm.sleep = [];
+                        _.each(data.sleep, function(rec) {
+                            //vm.fitness = data.fitness;
+                            rec.timestamp = new Date(rec.timestamp)
+                                .getTime();
+                            _sleepRecords.push(rec);
+                        });
+
+
+                        //vm.fitness = data.fitness;
+                        $log.info("vm.sleep", _sleepRecords);
+                        vm.sleep = [{
+                            "values": _sleepRecords
+                        }];
+                    }, function(error) {
+
+                    });
+                dashboardService.getSleepData()
+                    .then(function(data) {
+                        var _sleepRecords = [];
+                        vm.sleep = [];
+                        _.each(data.sleep, function(rec) {
+                            //vm.fitness = data.fitness;
+                            rec.timestamp = new Date(rec.timestamp)
+                                .getTime();
+                            _sleepRecords.push(rec);
+                        });
+
+
+                        //vm.fitness = data.fitness;
+                        $log.info("vm.sleep", _sleepRecords);
+                        vm.sleep = [{
+                            "values": _sleepRecords
+                        }];
+                        vm.dashboard = _getData();
+                    }, function(error) {
+
+                    });
             }, function(error) {
 
             });
 
-        dashboardService.getSleepData()
-            .then(function(data) {
-                var _sleepRecords = [];
-                vm.sleep = [];
-                _.each(data.sleep, function(rec) {
-                    //vm.fitness = data.fitness;
-                    rec.total_sleep = new Date(rec.total_sleep)
-                        .getTime();
-                    _sleepRecords.push(rec);
-                });
 
 
-                //vm.fitness = data.fitness;
-                $log.info("vm.sleep", _sleepRecords);
-                vm.sleep = [{
-                    "values": _sleepRecords
-                }];
-            }, function(error) {
-
-            });
     }
 }
